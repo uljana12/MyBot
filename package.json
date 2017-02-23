@@ -1,0 +1,7 @@
+{
+"name": "bot-chat-example",
+"version": "1.0.0",
+"description": "my first bot app",
+"dependencies": { "express": "^4.10.2",
+ "socket.io": "^1.7.3"}
+}
