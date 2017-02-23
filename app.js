@@ -34,7 +34,15 @@ bot.dialog('/', session => {
 
 // Sends greeting message when the bot is first added to a conversation
 bot.on('conversationUpdate', message => {
-    const reply = new builder.Message().text('Hi! I am a Bot. I can talk to you.');
-    bot.send(reply);
-    return;
+    if (message.membersAdded) {
+        message.membersAdded.forEach(identity => {
+            if (identity.id === message.address.bot.id) {
+                const reply = new builder.Message()
+                    .address(message.address)
+                    .text('Hi! I am SpeechToText Bot. I can understand the content of any audio and convert it to text. Try sending me a wav file.');
+                bot.send(reply);
+                return;
+            }
+        });
+    }
 });
