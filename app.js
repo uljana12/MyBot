@@ -34,9 +34,7 @@ bot.dialog('/', session => {
 
 // Sends greeting message when the bot is first added to a conversation
 bot.on('conversationUpdate', message => {
-    const reply = new builder.Message()
-                    .address(message.address)
-                    .text('Hi! I am a Bot. I can talk to you.');
-                bot.send(reply);
-                return;
+    const reply = new builder.Message().text('Hi! I am a Bot. I can talk to you.');
+    bot.send(reply);
+    return;
 });
