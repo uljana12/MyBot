@@ -26,3 +26,28 @@ server.post('/api/messages', connector.listen());
 bot.dialog('/', function (session) {
     session.send("Hello World");
 });
+
+function getJSONDataFromUrl(){
+    var query = "?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo";
+    var options = {};
+    options.url = "http://api.geonames.org";
+    options.type = options.type || "json";
+    options.path = "/citiesJSON" + query;
+    options.headers = {Accept: "application/json"};
+
+
+    var client = restify.createClient(options);
+
+    client.get(options, function(err, req, res, data) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        client.close();
+        console.log(JSON.stringify(data));
+
+        return JSON.stringify(data);
+    });
+}
+
+getJSONDataFromUrl();
