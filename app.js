@@ -39,7 +39,7 @@ bot.on('conversationUpdate', message => {
             if (identity.id === message.address.bot.id) {
                 const reply = new builder.Message()
                     .address(message.address)
-                    .text('Hi! I am SpeechToText Bot. I can understand the content of any audio and convert it to text. Try sending me a wav file.');
+                    .text('Hi! I am a very smart Bot. I can understand what you are saying.');
                 bot.send(reply);
                 return;
             }
